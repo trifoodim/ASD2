@@ -81,6 +81,31 @@ class BST:
     def Count(self):
         return _count(self.Root)
 
+    def WideAllNodes(self):
+        if self.Root is None:
+            return []
+        nodes = [self.Root]
+        i = 0
+        while i < len(nodes):
+            if nodes[i].LeftChild is not None:
+                nodes.append(nodes[i].LeftChild)
+            if nodes[i].RightChild is not None:
+                nodes.append(nodes[i].RightChild)
+            i += 1
+        return nodes
+
+    IN_ORDER = 0
+    POST_ORDER = 1
+    PRE_ORDER = 2
+
+    def DeepAllNodes(self, order):
+        reorder = {
+            self.IN_ORDER: lambda left, root, right: (left, root, right),
+            self.POST_ORDER: lambda left, root, right: (left, right, root),
+            self.PRE_ORDER: lambda left, root, right: (root, left, right),
+        }
+        return _deep_all_nodes(self.Root, reorder[order])
+
     def __move_node(self, node, new_parent):
         self.__detach_node(node)
         self.__attach_node(node, new_parent)
@@ -139,3 +164,12 @@ def _count(node):
     if node is None:
         return 0
     return _count(node.LeftChild) + 1 + _count(node.RightChild)
+
+
+def _deep_all_nodes(root, reorder):
+    if root is None:
+        return []
+    left_subtree = _deep_all_nodes(root.LeftChild, reorder)
+    right_subtree = _deep_all_nodes(root.RightChild, reorder)
+    left, middle, right = reorder(left_subtree, [root], right_subtree)
+    return left + middle + right
