@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add BST class" />
+    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add BST class">
+      <change afterPath="$PROJECT_DIR$/Trees/aBST.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +60,8 @@
       <workItem from="1705743798737" duration="168000" />
       <workItem from="1705744010870" duration="1042000" />
       <workItem from="1705909467383" duration="1447000" />
+      <workItem from="1706121797288" duration="985000" />
+      <workItem from="1706350752082" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="add SimpleTree class">
       <option name="closed" value="true" />
@@ -90,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705910315182</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add BST class">
+      <option name="closed" value="true" />
+      <created>1706121932511</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706121932511</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
