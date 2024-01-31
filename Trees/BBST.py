@@ -1,4 +1,7 @@
-def GenerateBBSTArray(a):
+from typing import List
+
+
+def GenerateBBSTArray(a: List) -> List:
     sorted_array = sorted(a)
     depth = _depth_from_len(len(sorted_array))
     tree = [None] * _len_from_depth(depth)
@@ -6,7 +9,7 @@ def GenerateBBSTArray(a):
     return tree
 
 
-def _depth_from_len(n):
+def _depth_from_len(n: int) -> int:
     m = 1
     d = 0
     while m < n + 1:
@@ -15,11 +18,11 @@ def _depth_from_len(n):
     return d - 1
 
 
-def _len_from_depth(d):
+def _len_from_depth(d: int) -> int:
     return 2 ** (d + 1) - 1
 
 
-def _fill_subtree(sorted_array, start, tree):
+def _fill_subtree(sorted_array: List, start: int, tree: List):
     if sorted_array == []:
         return
     mid_index = len(sorted_array) // 2
