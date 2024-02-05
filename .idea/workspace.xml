@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add aBST class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add BBST class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +59,7 @@
       <workItem from="1705909467383" duration="1447000" />
       <workItem from="1706121797288" duration="985000" />
       <workItem from="1706350752082" duration="1376000" />
+      <workItem from="1706734378529" duration="843000" />
     </task>
     <task id="LOCAL-00001" summary="add SimpleTree class">
       <option name="closed" value="true" />
@@ -110,7 +109,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706353469776</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add BBST class">
+      <option name="closed" value="true" />
+      <created>1706734470914</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706734470914</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add BBST class">
+      <option name="closed" value="true" />
+      <created>1706734610858</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706734610858</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +135,7 @@
     <MESSAGE value="add SimpleTree class" />
     <MESSAGE value="add BST class" />
     <MESSAGE value="add aBST class" />
-    <option name="LAST_COMMIT_MESSAGE" value="add aBST class" />
+    <MESSAGE value="add BBST class" />
+    <option name="LAST_COMMIT_MESSAGE" value="add BBST class" />
   </component>
 </project>
