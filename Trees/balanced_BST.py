@@ -1,6 +1,8 @@
+from typing import List, Optional
+
 class BSTNode:
 
-    def __init__(self, key, parent):
+    def __init__(self, key: int, parent):
         self.NodeKey = key
         self.Parent = parent
         self.LeftChild = None
@@ -13,15 +15,15 @@ class BalancedBST:
     def __init__(self):
         self.Root = None
 
-    def GenerateTree(self, a):
+    def GenerateTree(self, a: List):
         sorted_array = sorted(a)
         self.Root = _build_tree(sorted_array, None, 0)
 
-    def IsBalanced(self, root_node):
+    def IsBalanced(self, root_node: Optional[BSTNode]):
         return _get_balanced_depth(root_node) is not None
 
 
-def _build_tree(sorted_array, parent, level):
+def _build_tree(sorted_array: List, parent: BSTNode, level: int):
     if len(sorted_array) == 0:
         return None
     mid = len(sorted_array) // 2
@@ -32,7 +34,7 @@ def _build_tree(sorted_array, parent, level):
     return node
 
 
-def _get_balanced_depth(node):
+def _get_balanced_depth(node: BSTNode):
     if node is None:
         return 0
     left_depth = _get_balanced_depth(node.LeftChild)
