@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add BBST class" />
+    <list default="true" id="5fbfbb83-e6ca-4115-a15c-588faaebc366" name="Changes" comment="add bBST class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +60,7 @@
       <workItem from="1706121797288" duration="985000" />
       <workItem from="1706350752082" duration="1376000" />
       <workItem from="1706734378529" duration="843000" />
+      <workItem from="1707118905069" duration="266000" />
     </task>
     <task id="LOCAL-00001" summary="add SimpleTree class">
       <option name="closed" value="true" />
@@ -125,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706734610858</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add bBST class">
+      <option name="closed" value="true" />
+      <created>1707118930958</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707118930958</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add bBST class">
+      <option name="closed" value="true" />
+      <created>1707119110097</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707119110097</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +153,7 @@
     <MESSAGE value="add BST class" />
     <MESSAGE value="add aBST class" />
     <MESSAGE value="add BBST class" />
-    <option name="LAST_COMMIT_MESSAGE" value="add BBST class" />
+    <MESSAGE value="add bBST class" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bBST class" />
   </component>
 </project>
