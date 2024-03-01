@@ -80,6 +80,21 @@ class SimpleGraph:
             stack.push(next)
         return []
 
+    def BreadthFirstSearch(self, VFrom, VTo):
+        assert (self.vertex[VFrom] is not None)
+        assert (self.vertex[VTo] is not None)
+
+        queue = _VertexQueue(self.vertex)
+        queue.put(VFrom)
+        while not queue.is_empty():
+            current = queue.peek()
+            if current == VTo:
+                return queue.path_from_head()
+            for i in self.__not_visited_neighbors(current):
+                queue.put(i)
+            queue.get()
+        return []
+
     def WeakVertices(self):
         vertex_indices = [i for i in range(self.max_vertex) \
                           if self.vertex[i] is not None]
@@ -173,3 +188,42 @@ class _PathStack:
 
     def path(self):
         return [self.__vertex[i] for i in self.__stack.values()]
+
+
+class _VertexQueue:
+
+    def __init__(self, vertex):
+        self.__vertex = vertex
+        for v in self.__vertex:
+            if v is not None:
+                v.Hint = False
+        self.__previous = [None] * len(vertex)
+        self.__index = [None] * len(vertex)
+        self.__head = None
+        self.__tail = -1
+
+    def put(self, index):
+        self.__vertex[index].Hint = True
+        self.__tail += 1
+        self.__previous[self.__tail] = self.__head
+        self.__index[self.__tail] = index
+        if self.__head is None:
+            self.__head = 0
+
+    def peek(self):
+        return self.__index[self.__head]
+
+    def get(self):
+        self.__head += 1
+        return self.__index[self.__head - 1]
+
+    def is_empty(self):
+        return self.__tail < self.__head
+
+    def path_from_head(self):
+        path = []
+        index = self.__head
+        while index is not None:
+            path.append(self.__vertex[self.__index[index]])
+            index = self.__previous[index]
+        return list(reversed(path))
