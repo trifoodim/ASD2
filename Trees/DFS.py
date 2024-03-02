@@ -11,52 +11,37 @@ class SimpleGraph:
         self.max_vertex = size
         self.m_adjacency = [[0] * size for _ in range(size)]
         self.vertex = [None] * size
+        self.__add_pos = 0
 
-    def AddVertex(self, v: int) -> None:
-        new_vertex = Vertex(v)
-        new_index = 0
-        while new_index < self.max_vertex:
-            if not self.vertex[new_index]:
-                break
-            new_index += 1
-        self.vertex[new_index] = new_vertex
-        j = 0
-        while j <= new_index:
-            self.m_adjacency[j][new_index] = 0
-            self.m_adjacency[new_index][j] = 0
-            j += 1
+    def AddVertex(self, value):
+        assert (self.__add_pos < self.max_vertex)
+        assert (self.vertex[self.__add_pos] is None)
+        self.vertex[self.__add_pos] = Vertex(value)
+        self.__update_add_pos()
 
-    def RemoveVertex(self, v: int) -> None:
-        i = v
-        while i < self.max_vertex - 1:
-            self.vertex[i] = self.vertex[i + 1]
-            i += 1
-        self.vertex[self.max_vertex - 1] = None
-        x = 0
-
-        while x < self.max_vertex - 1:
-            y = v + 1
-            while y < self.max_vertex - 1:
-                self.m_adjacency[y][x] = self.m_adjacency[y + 1][x]
-                y += 1
-            x += 1
-
-        y = 0
-        while y < self.max_vertex - 1:
-            x = v + 1
-            while x < self.max_vertex - 1:
-                self.m_adjacency[y][x] = self.m_adjacency[y][x + 1]
-                x += 1
-            y += 1
+    def RemoveVertex(self, v):
+        assert (v >= 0)
+        assert (v < self.max_vertex)
+        assert (self.vertex[v] is not None)
+        self.vertex[v] = None
+        for w in range(self.max_vertex):
+            self.m_adjacency[v][w] = 0
+            self.m_adjacency[w][v] = 0
+        if v < self.__add_pos:
+            self.__add_pos = v
 
     def IsEdge(self, v1, v2):
-        return True if self.m_adjacency[v1][v2] == 1 else False
+        return self.m_adjacency[v1][v2] == 1
 
     def AddEdge(self, v1, v2):
+        assert (self.vertex[v1] is not None)
+        assert (self.vertex[v2] is not None)
         self.m_adjacency[v1][v2] = 1
         self.m_adjacency[v2][v1] = 1
 
     def RemoveEdge(self, v1, v2):
+        assert (self.vertex[v1] is not None)
+        assert (self.vertex[v2] is not None)
         self.m_adjacency[v1][v2] = 0
         self.m_adjacency[v2][v1] = 0
 
@@ -99,15 +84,22 @@ class SimpleGraph:
         vertex_indices = [i for i in range(self.max_vertex) \
                           if self.vertex[i] is not None]
         for i in vertex_indices:
-            self.vertex[i].Hit = False
+            self.vertex[i].Hint = False
         for i in vertex_indices:
-            if self.vertex[i].Hit:
+            if self.vertex[i].Hint:
                 continue
-            self.vertex[i].Hit = True
+            self.vertex[i].Hint = True
             neighbor_indices = self.__not_visited_neighbors(i)
             if not self.__mark_linked_pairs(neighbor_indices):
-                self.vertex[i].Hit = False
-        return [v for v in self.vertex if v is not None and not v.Hit]
+                self.vertex[i].Hint = False
+        return [v for v in self.vertex if v is not None and not v.Hint]
+
+    def __update_add_pos(self):
+        for i in range(self.__add_pos, self.max_vertex):
+            if self.vertex[i] is None:
+                self.__add_pos = i
+                return
+        self.__add_pos = self.max_vertex
 
     def __new_vertex_next(self, start, goal):
         if self.m_adjacency[start][goal]:
@@ -116,13 +108,13 @@ class SimpleGraph:
 
     def __vertex_next(self, start):
         for j in range(self.max_vertex):
-            if self.m_adjacency[start][j] == 1 and not self.vertex[j].Hit:
+            if self.m_adjacency[start][j] == 1 and not self.vertex[j].Hint:
                 return j
         return None
 
     def __not_visited_neighbors(self, start):
         return [j for j in range(self.max_vertex) \
-                if self.m_adjacency[start][j] == 1 and not self.vertex[j].Hit]
+                if self.m_adjacency[start][j] == 1 and not self.vertex[j].Hint]
 
     def __mark_linked_pairs(self, indices):
         is_marked = False
@@ -131,8 +123,8 @@ class SimpleGraph:
             for j in range(i + 1, len(indices)):
                 v2 = indices[j]
                 if self.m_adjacency[v1][v2] == 1:
-                    self.vertex[v1].Hit = True
-                    self.vertex[v2].Hit = True
+                    self.vertex[v1].Hint = True
+                    self.vertex[v2].Hint = True
                     is_marked = True
         return is_marked
 
@@ -166,11 +158,11 @@ class _PathStack:
         self.__is_new_top = False
         for v in self.__vertex:
             if v is not None:
-                v.Hit = False
+                v.Hint = False
 
     def push(self, index):
         self.__stack.push(index)
-        self.__vertex[index].Hit = True
+        self.__vertex[index].Hint = True
         self.__is_new_top = True
 
     def peek(self):
